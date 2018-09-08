@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+    <meta name='viewport' content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <link rel='stylesheet' href='http://code.jquery.com/mobile/1.4.0-beta.1/jquery.mobile-1.4.0-beta.1.min.css' />
+    <link rel='stylesheet' href='http://example.gajotres.net/iscrollview/jquery.mobile.iscrollview.css' />
+    <link rel='stylesheet' href='http://example.gajotres.net/iscrollview/jquery.mobile.iscrollview-pull.css' />
+    <style>
+        .ui-content {
+            padding: 0 !important;
+        }
+
+        .ui-listview {
+            margin: 0 !important;
+        }
+
+        .example-wrapper, .example-wrapper div.iscroll-scroller {
+            width: 100% !important;
+        }
+    </style>
+    <script src='http://code.jquery.com/jquery-1.10.1.min.js'></script>
+    <script src='http://code.jquery.com/mobile/1.4.0-beta.1/jquery.mobile-1.4.0-beta.1.min.js'></script>
+    <script src='http://example.gajotres.net/iscrollview/iscroll.js'></script>
+    <script src='http://example.gajotres.net/iscrollview/jquery.mobile.iscrollview.js'></script>
+    <script type="text/javascript" src="rest_api.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="page_navigation.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        document.addEventListener("deviceready", onDeviceReady, false);
+
+        function onDeviceReady() {
+            _GetLocationOfficeItems();
+        }
+
+        function whatsThis() {
+            alert("A Generic Office Item is something which can be rented along with the office, and will incur extra charges. Examples are laptops or portable projectors.");
+        }
+
+        function editOfficeSpace(button)
+        {
+            localStorage.setItem("getOfficeSpaceData", "true");
+            window.location = "details_officeSpace.html";
+        }
+
+        function newItem() {
+            localStorage.setItem("getItemData", "false");
+            window.location = "details_generic_officeItem.html";
+        }
+
+        function viewItemDetails(button) {
+            localStorage.setItem("getItemData", "true");
+            localStorage.setItem("selectedItemId", button.getAttribute("data-id"));
+            window.location = "details_generic_officeItem.html";
+        }
+    </script>
+</head>
+<body>
+    <div data-role='page' id='home'>
+
+        <div data-theme='a' data-role='header'>
+            <a onclick="_Back()" class="ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-back ui-btn-icon-notext">Back</a>
+            <h1>
+                Generic Office Items
+            </h1>
+        </div>
+
+        <div data-role='content'>
+            <div class='example-wrapper' data-iscroll>
+                <ul data-role='listview' id='items' data-theme='a'>
+                </ul>
+            </div>
+        </div>
+
+        <div data-theme='a' data-role='footer'>
+            <div data-role="navbar">
+                <ul>
+                    <li><a onclick="editOfficeSpace()" data-icon="edit">Edit Office Space</a></li>
+                    <li><a onclick="newItem()" data-icon="plus">New Office Item</a></li>
+                    <li><a onclick="whatsThis()" data-icon="info">What's this?</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

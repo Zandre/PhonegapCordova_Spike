@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+    <meta name='viewport' content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <link rel='stylesheet' href='http://code.jquery.com/mobile/1.4.0-beta.1/jquery.mobile-1.4.0-beta.1.min.css' />
+    <link rel='stylesheet' href='http://example.gajotres.net/iscrollview/jquery.mobile.iscrollview.css' />
+    <link rel='stylesheet' href='http://example.gajotres.net/iscrollview/jquery.mobile.iscrollview-pull.css' />
+    <style>
+        .ui-content {
+            padding: 0 !important;
+        }
+
+        .ui-listview {
+            margin: 0 !important;
+        }
+
+        .example-wrapper, .example-wrapper div.iscroll-scroller {
+            width: 100% !important;
+        }
+    </style>
+    <script src='http://code.jquery.com/jquery-1.10.1.min.js'></script>
+    <script src='http://code.jquery.com/mobile/1.4.0-beta.1/jquery.mobile-1.4.0-beta.1.min.js'></script>
+    <script src='http://example.gajotres.net/iscrollview/iscroll.js'></script>
+    <script src='http://example.gajotres.net/iscrollview/jquery.mobile.iscrollview.js'></script>
+    <script type="text/javascript" charset="utf-8" src="phonegap-1.0.0.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="rest_api.js"></script>
+    <script type="text/javascript" src="page_navigation.js"></script>
+    <script type="text/javascript" charset="utf-8">
+
+        document.addEventListener("deviceready", onDeviceReady, false);
+
+        function onDeviceReady() {
+            _GetListingLocations();
+        }
+
+        function viewLocationOfficeSpaces(button) {
+            localStorage.setItem("selectedListingLocationId", button.getAttribute("data-id"));
+            window.location = "list_of_officeSpaces.html"
+        }
+
+        function addNewLocation() {
+            localStorage.setItem("getListingLocationData", "false");
+            window.location = "details_location.html"
+        }
+
+        function editListing() {
+            localStorage.setItem("getListingData", "true");
+            window.location = "details_listing.html"
+        }
+
+        function whatsThis() {
+            alert("A Location represents an office branch. Once you've specified the position of your office location, you will be able to add Office Spaces to it.")
+        }
+    </script>
+</head>
+<body class="red_grayGradient">
+    <div data-role='page' id='home'>
+
+        <div data-theme='a' data-role='header'>
+            <a onclick="_Back()" class="ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-back ui-btn-icon-notext">Back</a>
+            <h1>Locations</h1>
+        </div>
+
+        <div data-role='content'>
+            <div class='example-wrapper' data-iscroll>
+                <ul data-role='listview' id='locations' data-theme='a'></ul>
+            </div>
+        </div>
+
+        <div data-theme='a' data-role='footer'>
+            <div data-role="navbar">
+                <ul>
+                    <li><a onclick="editListing()" data-icon="edit">Edit Listing</a></li>
+                    <li><a onclick="addNewLocation()" data-icon="location">New Location</a></li>
+                    <li><a onclick="whatsThis()" data-icon="info">What's this?</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

@@ -1,0 +1,53 @@
+﻿
+    .red_button {
+    width: 60%;
+    background-color: #555555;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid Red;
+    margin: 10px;
+    font-size: 16px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    display: block;
+}
+
+.blue_button {
+    width: 60%;
+    background-color: #555555;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid Blue;
+    margin: 10px;
+    font-size: 16px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    display: block;
+}
+
+.link_button {
+    background: none !important;
+    color: white;
+    text-decoration: underline;
+    border: none;
+    padding: 0 !important;
+    margin-top: 10px;
+    font: inherit;
+    cursor: pointer;
+}
+
+
+.image {
+    padding: 10px;
+    margin: 10px;
+}
+
+.red_grayGradient {
+    background: linear-gradient(to bottom right, #4c060d, #931007);
+}
+
+
+#map-canvas { 
+               height: 100%;
+               width: 100%;
+            }

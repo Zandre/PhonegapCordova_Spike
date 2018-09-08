@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+    <meta name='viewport' content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <link rel='stylesheet' href='http://code.jquery.com/mobile/1.4.0-beta.1/jquery.mobile-1.4.0-beta.1.min.css' />
+    <link rel='stylesheet' href='http://example.gajotres.net/iscrollview/jquery.mobile.iscrollview.css' />
+    <link rel='stylesheet' href='http://example.gajotres.net/iscrollview/jquery.mobile.iscrollview-pull.css' />
+    <link rel="stylesheet" href="css/superfluityStyle.css">
+    <style>
+        .ui-content {
+            padding: 0 !important;
+        }
+
+        .ui-listview {
+            margin: 0 !important;
+        }
+
+        .example-wrapper, .example-wrapper div.iscroll-scroller {
+            width: 100% !important;
+        }
+    </style>
+    <script src='http://code.jquery.com/jquery-1.10.1.min.js'></script>
+    <script src='http://code.jquery.com/mobile/1.4.0-beta.1/jquery.mobile-1.4.0-beta.1.min.js'></script>
+    <script src='http://example.gajotres.net/iscrollview/iscroll.js'></script>
+    <script src='http://example.gajotres.net/iscrollview/jquery.mobile.iscrollview.js'></script>
+    <script type="text/javascript" src="rest_api.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="rest_api.js"></script>
+    <script type="text/javascript" src="page_navigation.js"></script>
+    <script type="text/javascript" charset="utf-8">
+
+        var getData = localStorage.getItem("getOfficeSpaceData");
+        if (getData == "true") {
+            document.addEventListener("deviceready", onDeviceReady, false);
+        }
+
+        function onDeviceReady() {
+            _GetOfficeSpace();
+        }
+
+        function Save()
+        {
+            _SaveOfficeSpace();
+        }
+
+        function viewSpecificOfficeItems()
+        {
+            window.location = "list_of_specificOfficeItems.html"
+        }
+
+
+    </script>
+</head>
+<body>
+    <div data-role='page' id='home'>
+
+        <div data-theme='a' data-role='header'>
+            <a onclick="_Back()" class="ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-back ui-btn-icon-notext">Back</a>
+            <h1>
+                New Office Space
+            </h1>
+        </div>
+
+        <div data-role='content'>
+            <div class='example-wrapper' data-iscroll>
+                <ul data-role='listview' id='movie-list' data-theme='a'>
+
+                    <center>
+                        <img src="img/icon.png" id="companyLogo" name="companyLogo" width="150" height="150" class="image">
+                    </center>
+
+                    <div data-role="fieldcontain">
+                        <label for="officeTitle">Office Title:</label>
+                        <input type="text" id="officeTitle" name="officeTitle" placeholder="Fish Bowl Office">
+                    </div>
+
+                    <div data-role="fieldcontain">
+                        <label for="flatRate">Flat Rate p/h (R):</label>
+                        <input type="number" id="flatRate" name="flatRate" placeholder="250">
+                    </div>
+
+                    <div data-role="fieldcontain">
+                        <label for="officeSize">Room Size (in square metres):</label>
+                        <input type="number" id="officeSize" name="officeSize" placeholder="10">
+                    </div>
+
+                    <div data-role="fieldcontain">
+                        <label for="max">Maximum Amount of People:</label>
+                        <input type="number" id="maxPeople" name="max" placeholder="5">
+                    </div>
+
+                    <div data-role="fieldcontain">
+                        <label for="min">Minimum Amount of People:</label>
+                        <input type="number" id="minPeople" name="min" placeholder="2">
+                    </div>
+
+                    <div data-role="fieldcontain">
+                        <label for="officeType" style="color: black">Office Type:</label>
+                        <select id="officeType" name="officeType">
+                            <option>Open Office</option>
+                            <option>Cubicle</option>
+                            <option>Private Office</option>
+                            <option>Shared Office</option>
+                            <option>Team Room</option>
+                            <option>Study Booth</option>
+                            <option>Work Lounge</option>
+                            <option>Small Meeting Room</option>
+                            <option>Large Meeting Room</option>
+                            <option>Auditorium</option>
+                            <option>Brainstorm Room</option>
+                        </select>
+                    </div>
+
+                    <div data-role="fieldcontain">
+                        <label for="description">Office Description:</label>
+                        <textarea name="description" id="description" placeholder="Office Description"></textarea>
+                    </div>
+
+                    <div data-role="controlgroup">
+                        <a onclick="viewSpecificOfficeItems()" data-role="button">Specific Office Items</a>
+                        <a onclick="" data-role="button">Office Calendar</a>
+                    </div>        
+                </ul>
+            </div>
+        </div>
+
+
+
+        <div data-theme='a' data-role='footer'>
+            <div data-role="navbar">
+                <ul>
+                    <li><a onclick="Save()" data-role="button">Save</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

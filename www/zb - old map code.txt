@@ -1,0 +1,91 @@
+// JavaScript source code
+function GoogleMap() {
+
+    this.initialize = function () {
+        google.maps.event.addDomListener(window, 'load', onLocationSuccess);
+        navigator.geolocation.getCurrentPosition(onLocationSuccess, onLocationError, { timeout: 10000 });
+    }
+
+    function onLocationSuccess(position) {
+        var lat = position.coords.latitude;
+        var lang = position.coords.longitude;
+
+        var map = showMapMyLocation(lat, lang)
+        //addMarkersToMap(map);
+
+        return map;
+    }
+
+    function onLocationError(error) {
+        //alert('Unable your find current location\nError Code: ' + error.code + '\n' + 'Message: ' + error.message + '\n');
+
+        var map = showMapWholeWorld();
+        //addMarkersToMap(map);
+
+        return map;
+    }
+
+    var showMapMyLocation = function (lat, lang) {
+        var mapOptions =
+            {
+                zoom: 12,
+                center: new google.maps.LatLng(lat, lang),
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            }
+
+        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+        google.maps.event.addListener(map, 'click', function (event)
+        {
+            document.getElementById('long').value = event.latLng.lng();
+            document.getElementById('lat').value = event.latLng.lat();
+              
+            placeMarker(event.latLng, map);
+        });
+
+        return map;
+    }
+
+    var showMapWholeWorld = function (lat, lang) {
+        var mapOptions =
+            {
+                zoom: 1,
+                center: new google.maps.LatLng('35.86721', '18.491019'),
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            }
+
+        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+        return map;
+    }
+
+    function placeMarker(location, map)
+    {
+        var marker = new google.maps.Marker(
+            {
+                position: location,
+                map: map
+            });
+
+        //window.location = "details_location.html"
+    }
+
+    var addMarkersToMap = function (map)
+    {
+        //here we'd want a list of all company locations and populate the map with that list
+            var latitudeAndLongitudeOne = new google.maps.LatLng('-26.049689', '28.021922');
+
+            var markerOne = new google.maps.Marker({
+                position: latitudeAndLongitudeOne,
+                map: map
+            });
+
+            var latitudeAndLongitudeTwo = new google.maps.LatLng('-26.108828', '28.046148');
+
+            var markerOne = new google.maps.Marker({
+                position: latitudeAndLongitudeTwo,
+                map: map
+            });
+        }
+}
+

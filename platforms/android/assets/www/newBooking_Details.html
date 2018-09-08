@@ -1,0 +1,218 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+    <meta name='viewport' content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <link rel='stylesheet' href='http://code.jquery.com/mobile/1.4.0-beta.1/jquery.mobile-1.4.0-beta.1.min.css' />
+    <link rel='stylesheet' href='http://example.gajotres.net/iscrollview/jquery.mobile.iscrollview.css' />
+    <link rel='stylesheet' href='http://example.gajotres.net/iscrollview/jquery.mobile.iscrollview-pull.css' />
+    <link rel="stylesheet" href="css/superfluityStyle.css">
+    <style>
+        .ui-content {
+            padding: 0 !important;
+        }
+
+        .ui-listview {
+            margin: 0 !important;
+        }
+
+        .example-wrapper, .example-wrapper div.iscroll-scroller {
+            width: 100% !important;
+        }
+    </style>
+    <script src='http://code.jquery.com/jquery-1.10.1.min.js'></script>
+    <script src='http://code.jquery.com/mobile/1.4.0-beta.1/jquery.mobile-1.4.0-beta.1.min.js'></script>
+    <script src='http://example.gajotres.net/iscrollview/iscroll.js'></script>
+    <script src='http://example.gajotres.net/iscrollview/jquery.mobile.iscrollview.js'></script>
+    <script type="text/javascript" src="rest_api.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="rest_api.js"></script>
+    <script type="text/javascript" src="page_navigation.js"></script>
+    <script type="text/javascript" charset="utf-8">
+
+        var getData = localStorage.getItem("getOfficeSpaceData");
+        if (getData == "true") {
+            document.addEventListener("deviceready", onDeviceReady, false);
+        }
+
+        function onDeviceReady() {
+
+        }
+
+        function RequestBooking()
+        {
+
+        }
+
+        $('#collapsibleSetWrapper .mycheckbox').checkboxradio({
+            create: function (event, ui) {
+                var checkbox = $(event.target);
+                var clickTarget = $(event.target).parent();
+                $(clickTarget).click(function (e) {
+                    if ($(checkbox).is(':checked')) {
+                        $(checkbox).attr("checked", false).checkboxradio("refresh");
+                        // select all the nested checkboxes here
+                    }
+                    else {
+                        $(checkbox).attr("checked", true).checkboxradio("refresh");
+                        // unselect all the nested checkboxes here
+                    }
+                    e.preventDefault();
+                    return false;
+                });
+            }
+        })
+
+    </script>
+</head>
+<body>
+    <div data-role='page' id='home'>
+
+        <div data-theme='a' data-role='header'>
+            <a onclick="_Back()" class="ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-back ui-btn-icon-notext">Back</a>
+            <h1>
+                Office Title
+            </h1>
+        </div>
+
+        <div data-role='content'>
+            <div class='example-wrapper' data-iscroll>
+
+                <div data-role="collapsible" data-collapsed="false" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-iconpos="right">
+
+                    <h4>Details</h4>
+
+                    <div style="display: block">
+                        <img src="img/coin.png" height="14" width="14" style="float: left" />
+                        <p style="padding-left: 35px">The Price</p>
+                    </div>
+
+                    <div style="display: block">
+                        <img src="img/information.png" height="14" width="14" style="float: left" />
+                        <p style="padding-left: 35px">The Description of the Office as the listing provider has detailed it</p>
+                    </div>
+
+                    <div style="display: block">
+                        <img src="img/placeholder.png" height="14" width="14" style="float: left" />
+                        <p style="padding-left: 35px">The Street Address</p>
+                    </div>
+
+                    <div style="display: block">
+                        <img src="img/people.png" height="14" width="14" style="float: left" />
+                        <p style="padding-left: 35px">Max people Allowed</p>
+                    </div>
+
+                    <div style="display: block">
+                        <img src="img/officeType.png" height="14" width="14" style="float: left" />
+                        <p style="padding-left: 35px">OfficeType</p>
+                    </div>
+
+                    <div style="display: block">
+                        <img src="img/ruler.png" height="14" width="14" style="float: left" />
+                        <p style="padding-left: 35px">How big is the room</p>
+                    </div>
+
+                    <div style="display: block">
+                        <img src="img/clock.png" height="14" width="14" style="float: left" />
+                        <p style="padding-left: 35px">Office Hours</p>
+                    </div>
+                    <ul style="list-style: none; padding-left: 70px">
+                        <li>Monday</li>
+                        <li>Tuesday</li>
+                        <li>Wednesday</li>
+                        <li>Thursday</li>
+                        <li>Friday</li>
+                        <li>Saturday</li>
+                        <li>Sunday</li>
+                    </ul>
+                </div>
+
+                <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-iconpos="right">
+
+                    <h4>Date & Time</h4>
+
+                    <div>
+                        <label for="date">Date:</label>
+                        <input type="date" name="date" />
+                    </div>
+
+                    <div>
+                        <label for="checkIn">Check In:</label>
+                        <input type="time" name="checkIn" />
+                    </div>
+
+                    <div>
+                        <label for="checkOut">Check Out:</label>
+                        <input type="time" name="checkOut" />
+                    </div>
+                </div>
+
+                <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-iconpos="right">
+
+                    <h4>Available Extra Amenities</h4>
+
+                    <div id="collapsibleSetWrapper">
+                        <div data-role="collapsible" data-collapsed="true" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+                            <h3>
+                                <input type="checkbox" id="uniqueID" data-iconpos="right"/>
+                                <label for="uniqueID">Item 1</label>
+                            </h3>
+                            <div id="mycontent">
+                                <p>This is the content</p>
+                            </div>
+                        </div>
+
+                        <div data-role="collapsible" data-collapsed="true" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+                            <h3>
+                                <input type="checkbox" id="uniqueID2" data-iconpos="right"/>
+                                <label for="uniqueID2">Item 2</label>
+                            </h3>
+                            <div id="mycontent2">
+                                <p>This is the content 2</p>
+                            </div>
+                        </div>
+
+                        <div data-role="collapsible" data-collapsed="true" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+                            <h3>
+                                <input type="checkbox" id="uniqueID3" data-iconpos="right"/>
+                                <label for="uniqueID3">Item 3</label>
+                            </h3>
+                            <div id="mycontent3">
+                                <p>This is the content 3</p>
+                            </div>
+                        </div>
+
+                        <div data-role="collapsible" data-collapsed="true" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+                            <h3>
+                                <input type="checkbox" id="uniqueID4" data-iconpos="right" />
+                                <label for="uniqueID4">Item 4</label>
+                            </h3>
+                            <div id="mycontent4">
+                                <p>This is the content 4</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-iconpos="right">
+                    <h4>Included Amenities</h4>
+                </div>
+
+            </div>
+        </div>
+
+        <div data-theme='a' data-role='footer'>
+            <div data-role="navbar">
+                <ul>
+                    <li><a onclick="RequestBooking()" data-role="button">Request Booking</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+
+</body>
+</html>

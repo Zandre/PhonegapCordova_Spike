@@ -1,0 +1,89 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Login</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css" />
+    <link rel="stylesheet" href="/vendor/waves/waves.min.css" />
+    <link rel="stylesheet" href="/vendor/wow/animate.css" />
+    <link rel="stylesheet" href="/css/nativedroid2.css" />
+    <link rel="stylesheet" href="css/superfluityStyle.css">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel='stylesheet' href='http://code.jquery.com/mobile/1.4.0-beta.1/jquery.mobile-1.4.0-beta.1.min.css' />
+    <script src='http://code.jquery.com/jquery-1.10.1.min.js'></script>
+    <script src='http://code.jquery.com/mobile/1.4.0-beta.1/jquery.mobile-1.4.0-beta.1.min.js'></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
+    <script src="/vendor/waves/waves.min.js"></script>
+    <script src="/vendor/wow/wow.min.js"></script>
+    <script src="/js/nativedroid2.js"></script>
+    <script src="/nd2settings.js"></script>
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" src="rest_api.js"></script>
+    <script type="text/javascript" charset="utf-8">
+
+        function Login()
+        {
+            _Login();
+        }
+
+        function FakeValidate() {
+            return true;
+        }
+
+        function SignUp() {
+            window.location = "signup.html"
+        }
+
+        function Cancel()
+        {
+            //return to previous page
+            window.history.back();
+        }
+
+        function ForgotPassword()
+        {
+            window.location = "forgotpassword.html"
+        }
+
+    </script>
+
+</head>
+<body class="red_grayGradient">
+        <div data-theme='a' data-role='header'>
+            <h1>
+                SuperFluity &copy;
+                <script>new Date().getFullYear()>2010&&document.write(new Date().getFullYear());</script>
+            </h1>
+        </div>
+
+        <center>
+            <img src="img/icon.png" id="companyLogo" name="companyLogo" width="150" height="150" class="image">
+        </center>
+
+        <div data-role="fieldcontain">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Email">
+        </div>
+
+        <div data-role="fieldcontain">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Password">
+        </div>
+
+        <div data-role="controlgroup">
+            <a onclick="Login()" data-role="button">Login</a>
+            <a onclick="Cancel()" data-role="button">Cancel</a>
+            <a onclick="SignUp()" data-role="button">Sign Up</a>
+        </div>
+
+        <div>
+            <a href="ForgotPassword()" data-role="button" data-theme="b">Forgot Password?</a>
+        </div>
+</body>
+</html>

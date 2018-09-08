@@ -1,0 +1,308 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+    <meta name='viewport' content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <link rel='stylesheet' href='http://code.jquery.com/mobile/1.4.0-beta.1/jquery.mobile-1.4.0-beta.1.min.css' />
+    <link rel='stylesheet' href='http://example.gajotres.net/iscrollview/jquery.mobile.iscrollview.css' />
+    <link rel='stylesheet' href='http://example.gajotres.net/iscrollview/jquery.mobile.iscrollview-pull.css' />
+    <style>
+        .ui-content {
+            padding: 0 !important;
+        }
+
+        .ui-listview {
+            margin: 0 !important;
+        }
+
+        .example-wrapper, .example-wrapper div.iscroll-scroller {
+            width: 100% !important;
+        }
+
+        .rslides {
+            position: relative;
+            list-style: none;
+            overflow: hidden;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
+        .listItem {
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            position: absolute;
+            display: none;
+            width: 100%;
+            left: 0;
+            top: 0;
+        }
+
+         .listItem:first-child {
+                position: relative;
+                display: block;
+                float: left;
+            }
+
+        .image {
+            display: block;
+            height: auto;
+            float: left;
+            width: 100%;
+            border: 0;
+        }
+
+        a.prev, a.next {
+            height: 91px;
+            position: absolute;
+            width: 43px;
+            top: 50%;
+            margin-top: -30px;
+            opacity: 0.6;
+            text-indent: -99999px;
+            cursor: pointer;
+            -webkit-transition: opacity 200ms ease-out;
+            transition: 200ms ease-out;
+        }
+
+        a.prev:hover, a.next:hover {
+                opacity: 1;
+            }
+
+        .prev {
+            left: 0;
+            background: #000 url('https://lh4.googleusercontent.com/-JN1IZLtuToI/UUoZnMG3C_I/AAAAAAAAAE8/SEbJ9nqXGnY/s226/sprite.png') no-repeat -200px 25px;
+        }
+
+        .next {
+            right: 0;
+            background: #000 url('https://lh4.googleusercontent.com/-JN1IZLtuToI/UUoZnMG3C_I/AAAAAAAAAE8/SEbJ9nqXGnY/s226/sprite.png') no-repeat -167px 25px;
+        }
+
+        .box{
+            position: absolute;
+            top: 5%;
+            left: 10%;
+            width: 40%;
+            background-color: black;
+            opacity:0.5;
+        }
+
+        .listItemHeader{
+            padding-left: 10px;
+            top : 2%;
+            font-weight: bold;
+            text-decoration: underline;
+            font-size: xx-large;
+            color: white;
+            text-align: left;
+        }
+
+        .listItemAddress{
+            padding-left: 10px;
+            top : 10%;
+            font-size: medium;
+            color: white;
+            text-align: left;
+        }
+    </style>
+    <script src='http://code.jquery.com/jquery-1.10.1.min.js'></script>
+    <script src='http://code.jquery.com/mobile/1.4.0-beta.1/jquery.mobile-1.4.0-beta.1.min.js'></script>
+    <script src='http://example.gajotres.net/iscrollview/iscroll.js'></script>
+    <script src='http://example.gajotres.net/iscrollview/jquery.mobile.iscrollview.js'></script>
+    <script src="js/responsiveslides.min.js"></script>
+    <script type="text/javascript" src="rest_api.js"></script>
+    <script type="text/javascript" charset="utf-8">
+
+        function goToUserProfile() {
+            localStorage.setItem("nextPage", "details_userProfile.html");
+            _GoToLogin();
+        }
+
+        function callListings() {
+            localStorage.setItem("nextPage", "list_of_listings.html");
+            _GoToLogin();
+        }
+
+        function callNewBookings() {
+            window.location = "newBooking_chooseLocation.html"
+        }
+
+        function callUserBookingHistory() {
+            localStorage.setItem("nextPage", "list_user_booking_history.html");
+            _GoToLogin();
+        }
+
+    </script>
+    <script>
+        $(function () {$(".rslides").responsiveSlides();} );
+    </script>
+</head>
+<body>
+    <div data-role='page' id='home'>
+
+        <div data-theme='a' data-role='header'>
+            <h1>
+                SuperFluity &copy;
+                <script>new Date().getFullYear()>2010&&document.write(new Date().getFullYear());</script>
+            </h1>
+        </div>
+
+        <div data-role='content' id="homepage_content">
+            <div class='example-wrapper' data-iscroll>
+                <center>
+                    <ul class="rslides">
+
+                        <!--slideshow is a combination of
+                        http://responsiveslides.com/ and
+                        https://codepen.io/johnmotyljr/pen/cDpEH-->
+
+                        <!--navigation does not work yet, tried methods from both links-->
+
+                        <li class="listItem" id="slide1">
+                            <div class="box">
+                                <p class="listItemHeader">Office 1</p>
+                                <p class="listItemAddress">Street Address for Office 1<br />Johannesburg<br />South Africa</p>
+                            </div>                            
+                            <img src="img/001.jpg" class="image">
+                            <a class="prev">prev</a>
+                            <a class="next">next</a>
+                        </li>
+                        <li class="listItem" id="slide2">
+                            <div class="box">
+                                <p class="listItemHeader">Office 2</p>
+                                <p class="listItemAddress">Street Address for Office 2<br />Cape Town<br />South Africa</p>
+                            </div>
+                            <img src="img/002.jpg" class="image">
+                            <a class="prev">prev</a>
+                            <a class="next">next</a>
+                        </li>
+                        <li class="listItem" id="slide3">
+                            <div class="box">
+                                <p class="listItemHeader">Office 3</p>
+                                <p class="listItemAddress">Street Address for Office 3<br />Bloemfontein<br />South Africa</p>
+                            </div>
+                            <img src="img/003.jpg" class="image">
+                            <a class="prev">prev</a>
+                            <a class="next">next</a>
+                        </li>
+                        <li class="listItem" id="slide4">
+                            <div class="box">
+                                <p class="listItemHeader">Office 4</p>
+                                <p class="listItemAddress">Street Address for Office 4<br />Port Elizabeth<br />South Africa</p>
+                            </div>
+                            <img src="img/004.jpg" class="image">
+                            <a class="prev">prev</a>
+                            <a class="next">next</a>
+                        </li>
+                        <li class="listItem" id="slide5">
+                            <div class="box">
+                                <p class="listItemHeader">Office 5</p>
+                                <p class="listItemAddress">Street Address for Office 5<br />New York City<br />United States of America</p>
+                            </div>
+                            <img src="img/005.jpg" class="image">
+                            <a class="prev">prev</a>
+                            <a class="next">next</a>
+                        </li>
+                        <li class="listItem" id="slide6">
+                            <div class="box">
+                                <p class="listItemHeader">Office 6</p>
+                                <p class="listItemAddress">Street Address for Office 6<br />Washington DC<br />United States of America</p>
+                            </div>
+                            <img src="img/006.jpg" class="image">
+                            <a class="prev">prev</a>
+                            <a class="next">next</a>
+                        </li>
+                        <li class="listItem" id="slide7">
+                            <div class="box">
+                                <p class="listItemHeader">Office 7</p>
+                                <p class="listItemAddress">Street Address for Office 7<br />Toronto<br />Canada</p>
+                            </div>
+                            <img src="img/007.jpg" class="image">
+                            <a class="prev">prev</a>
+                            <a class="next">next</a>
+                        </li>
+                        <li class="listItem" id="slide8">
+                            <div class="box">
+                                <p class="listItemHeader">Office 8</p>
+                                <p class="listItemAddress">Street Address for Office 8<br />Berlin<br />Germany</p>
+                            </div>
+                            <img src="img/008.jpg" class="image">
+                            <a class="prev">prev</a>
+                            <a class="next">next</a>
+                        </li>
+                        <li class="listItem" id="slide9">
+                            <div class="box">
+                                <p class="listItemHeader">Office 9</p>
+                                <p class="listItemAddress">Street Address for Office 9<br />London<br />England</p>
+                            </div>
+                            <img src="img/009.jpg" class="image">
+                            <a class="prev">prev</a>
+                            <a class="next">next</a>
+                        </li>
+                        <li class="listItem" id="slide10">
+                            <div class="box">
+                                <p class="listItemHeader">Office 10</p>
+                                <p class="listItemAddress">Street Address for Office 10<br />Amsterdam<br />Netherlands</p>
+                            </div>
+                            <img src="img/010.jpg" class="image">
+                            <a class="prev">prev</a>
+                            <a class="next">next</a>
+                        </li>
+                        <li class="listItem" id="slide11">
+                            <div class="box">
+                                <p class="listItemHeader">Office 11</p>
+                                <p class="listItemAddress">Street Address for Office 11<br />Canberra<br />Australia</p>
+                            </div>
+                            <img src="img/011.jpg" class="image">
+                            <a class="prev">prev</a>
+                            <a class="next">next</a>
+                        </li>
+                        <li class="listItem" id="slide12">
+                            <div class="box">
+                                <p class="listItemHeader">Office 12</p>
+                                <p class="listItemAddress">Street Address for Office 12<br />Auckland<br />New Zealand</p>
+                            </div>
+                            <img src="img/012.jpg" class="image">
+                            <a class="prev">prev</a>
+                            <a class="next">next</a>
+                        </li>
+                    </ul>
+                </center>
+            </div>
+        </div>
+
+        <!-- menu panel -->
+        <div data-role="panel" id="menuPanel" data-display="overlay">
+            <center><br /><img src="img/icon.png" width="75"></center>
+            <br /><br />
+            <ul data-role="listview">
+                <!--for now just using random icons, links must still point somewhere-->
+                <li data-icon="user"><a onclick="goToUserProfile()">My Profile</a></li>
+                <li data-icon="info"><a href="#">About</a></li>
+                <li data-icon="search"><a href="#">Help</a></li>
+                <li data-icon="bullets"><a onclick="callListings()">Listings</a></li>
+            </ul><br />
+            <br /><br />
+            <center>
+                <p style="font-size: 10px;">
+                    SuperFluity &copy;
+                    <script>new Date().getFullYear()>2010&&document.write(new Date().getFullYear());</script>
+                    <br />v1.0.0
+                    <span id="version_devicetype"></span>
+                </p>
+            </center>
+        </div>
+
+        <div data-theme='a' data-role='footer'>
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#menuPanel" data-icon="bars">Menu</a></li>
+                    <li><a onclick="callNewBookings()" data-icon="shop">New Booking</a></li>
+                    <li><a onclick="callUserBookingHistory()" data-icon="calendar">My Bookings</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

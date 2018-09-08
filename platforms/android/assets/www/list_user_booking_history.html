@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+    <meta name='viewport' content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <link rel='stylesheet' href='http://code.jquery.com/mobile/1.4.0-beta.1/jquery.mobile-1.4.0-beta.1.min.css' />
+    <link rel='stylesheet' href='http://example.gajotres.net/iscrollview/jquery.mobile.iscrollview.css' />
+    <link rel='stylesheet' href='http://example.gajotres.net/iscrollview/jquery.mobile.iscrollview-pull.css' />
+    <style>
+        .ui-content {
+            padding: 0 !important;
+        }
+
+        .ui-listview {
+            margin: 0 !important;
+        }
+
+        .example-wrapper, .example-wrapper div.iscroll-scroller {
+            width: 100% !important;
+        }
+
+        .listImage{
+            padding-top: 4px;
+            padding-left: 4px                
+        }
+
+        .header{
+            font-size: small;
+            font-weight: bold;
+        }
+
+    </style>
+    <script src='http://code.jquery.com/jquery-1.10.1.min.js'></script>
+    <script src='http://code.jquery.com/mobile/1.4.0-beta.1/jquery.mobile-1.4.0-beta.1.min.js'></script>
+    <script src='http://example.gajotres.net/iscrollview/iscroll.js'></script>
+    <script src='http://example.gajotres.net/iscrollview/jquery.mobile.iscrollview.js'></script>
+    <script type="text/javascript" charset="utf-8">
+
+    </script>
+</head>
+<body>
+    <div data-role='page' id='home'>
+
+        <div data-theme='a' data-role='header'>
+            <h1>Booking History</h1>
+        </div>
+
+        <div data-role='content'>
+            <div class='example-wrapper' data-iscroll>
+                <ul data-role='listview' id='movie-list' data-theme='a'>
+                    <li>
+                        <a data-id='1'>
+                            <img src="img/icon.png" class="listImage" />
+                            <h1 class="header">19 July 2017</h1>
+                            <p>
+                                <small>14:00 - 15:30</small>
+                            </p>
+                            <p>
+                                <b>Regis</b>
+                            </p>
+                            <p>
+                                <small>Bryanston Branch</small>
+                            </p>
+                            <p>
+                                <small>Boardroom Office</small>
+                            </p>
+                            <div style="text-align: right; position:absolute; top: 3%; right: 5%;">
+                                <p>
+                                    <b>$23.00</b>
+                                </p>
+                            </div>
+                            <div style="text-align: right; position:absolute; bottom: 3%; right: 5%;">
+                                <small>Status: </small><small><b>completed</b></small>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a data-id='2'>
+                            <img src="img/icon.png" class="listImage" />
+                            <h1 class="header">15 March 2017</h1>
+                            <p>
+                                <small>14:00 - 15:30</small>
+                            </p>
+                            <p>
+                                <b>Regis</b>
+                            </p>
+                            <p>
+                                <small>Cape Town Branch</small>
+                            </p>
+                            <p>
+                                <small>Unit #27</small>
+                            </p>
+                            <div style="text-align: right; position:absolute; top: 3%; right: 5%;">
+                                <p>
+                                    <b>R450.00</b>
+                                </p>
+                            </div>
+                            <div style="text-align: right; position:absolute; bottom: 3%; right: 5%;">
+                                <small>Status: </small><small><b style="color: orangered">awaiting payment</b></small>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a data-id='3'>
+                            <img src="img/icon.png" class="listImage" />
+                            <h1 class="header">14 December 2016</h1>
+                            <p>
+                                <small>14:00 - 15:30</small>
+                            </p>
+                            <p>
+                                <b>The Office House</b>
+                            </p>
+                            <p>
+                                <small>Parkview Branch</small>
+                            </p>
+                            <p>
+                                <small>Room 7</small>
+                            </p>
+                            <div style="text-align: right; position:absolute; top: 3%; right: 5%;">
+                                <p>
+                                    <b>$45.00</b>
+                                </p>
+                            </div>
+                            <div style="text-align: right; position:absolute; bottom: 3%; right: 5%;">
+                                <small>Status: </small><small><b style="color: darkgreen">approved</b></small>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a data-id='3'>
+                            <img src="img/icon.png" class="listImage" />
+                            <h1 class="header">25 November 2016</h1>
+                            <p>
+                                <small>14:00 - 15:30</small>
+                            </p>
+                            <p>
+                                <b>ABSA Bank</b>
+                            </p>
+                            <p>
+                                <small>Sandton Branch</small>
+                            </p>
+                            <p>
+                                <small>Boardroom Office</small>
+                            </p>
+                            <div style="text-align: right; position:absolute; top: 3%; right: 5%;">
+                                <p>
+                                    <b>R750.00</b>
+                                </p>
+                            </div>
+                            <div style="text-align: right; position:absolute; bottom: 3%; right: 5%;">
+                                    <small>Status: </small><small><b style="color: red">cancelled</b> </small>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

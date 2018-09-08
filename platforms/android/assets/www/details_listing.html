@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css" />
+		<link rel="stylesheet" href="/vendor/waves/waves.min.css" />
+		<link rel="stylesheet" href="/vendor/wow/animate.css" />
+		<link rel="stylesheet" href="/css/nativedroid2.css" />
+        <link rel="stylesheet" href="css/superfluityStyle.css">
+        <link rel='stylesheet' href='http://code.jquery.com/mobile/1.4.0-beta.1/jquery.mobile-1.4.0-beta.1.min.css' />
+        <link rel='stylesheet' href='http://example.gajotres.net/iscrollview/jquery.mobile.iscrollview.css' />
+        <link rel='stylesheet' href='http://example.gajotres.net/iscrollview/jquery.mobile.iscrollview-pull.css' />
+		<meta name="mobile-web-app-capable" content="yes">
+	 	<meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <style>
+            .ui-content {
+                padding: 0 !important;
+            }
+
+            .ui-listview {
+                margin: 0 !important;
+            }
+
+            .example-wrapper, .example-wrapper div.iscroll-scroller {
+                width: 100% !important;
+            }
+        </style>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
+        <script src="/vendor/waves/waves.min.js"></script>
+        <script src="/vendor/wow/wow.min.js"></script>
+        <script src="/js/nativedroid2.js"></script>
+        <script src="/nd2settings.js"></script>
+        <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+        <script src='http://code.jquery.com/jquery-1.10.1.min.js'></script>
+        <script src='http://code.jquery.com/mobile/1.4.0-beta.1/jquery.mobile-1.4.0-beta.1.min.js'></script>
+        <script src='http://example.gajotres.net/iscrollview/iscroll.js'></script>
+        <script src='http://example.gajotres.net/iscrollview/jquery.mobile.iscrollview.js'></script>
+        <script type="text/javascript" src="rest_api.js"></script>
+        <script type="text/javascript" src="page_navigation.js"></script>
+        <script type="text/javascript" charset="utf-8">
+
+            var getData = localStorage.getItem("getListingData");
+            if (getData == "true") {
+                document.addEventListener("deviceready", onDeviceReady, false);
+            }
+
+            function onDeviceReady() {
+                _GetListing();
+            }
+
+            function Save()
+            {
+                _SaveListing();
+            }
+
+            function pickLogo()
+            {
+                navigator.camera.getPicture(onPickLogoSuccess, onPickLogoFail,
+                    {
+                        quality: 50,
+                        allowEdit: true,
+                        destinationType: Camera.DestinationType.FILE_URI,
+                        sourceType: Camera.PictureSourceType.PHOTOLIBRARY
+                     });
+            }
+
+            function onPickLogoSuccess(imageData)
+            {
+                var image = document.getElementById('companyLogo');
+                //image.style.display = 'block';
+                image.src = imageData;
+            }
+
+            function onPickLogoFail(message) {
+                alert('Failed to retrieve image: ' + message);
+            }
+
+        </script>
+
+	</head>
+<body class="red_grayGradient">
+    <div id="listingPage">
+
+        <div data-theme='a' data-role='header'>
+            <h1>Listing</h1>
+        </div>
+
+        <div data-role='content'>
+            <div class='example-wrapper' data-iscroll>
+                <ul data-role='listview' data-theme='a'>
+
+                    <center>
+                        <img src="img/icon.png" id="companyLogo" name="companyLogo" width="150" height="150" class="image">
+                    </center>
+
+                    <div data-role="fieldcontain">
+                        <label for="companyName">Company Name:</label>
+                        <input type="text" id="companyName" name="companyName" placeholder="Company Name">
+                    </div>
+
+                    <div data-role="controlgroup">
+                        <a onclick="pickLogo()" data-role="button">Pick Logo</a>
+                    </div>
+                </ul>
+            </div>
+        </div>
+
+        <div data-theme='a' data-role='footer'>
+            <div data-role="navbar">
+                <ul>
+                    <li><a onclick="Save()" data-role="button">Save</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

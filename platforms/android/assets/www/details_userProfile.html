@@ -1,0 +1,123 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Listings</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css" />
+    <link rel="stylesheet" href="/vendor/waves/waves.min.css" />
+    <link rel="stylesheet" href="/vendor/wow/animate.css" />
+    <link rel="stylesheet" href="/css/nativedroid2.css" />
+    <link rel="stylesheet" href="css/superfluityStyle.css">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
+    <script src="/vendor/waves/waves.min.js"></script>
+    <script src="/vendor/wow/wow.min.js"></script>
+    <script src="/js/nativedroid2.js"></script>
+    <script src="/nd2settings.js"></script>
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <link rel='stylesheet' href='http://code.jquery.com/mobile/1.4.0-beta.1/jquery.mobile-1.4.0-beta.1.min.css' />
+    <script src='http://code.jquery.com/jquery-1.10.1.min.js'></script>
+    <script src='http://code.jquery.com/mobile/1.4.0-beta.1/jquery.mobile-1.4.0-beta.1.min.js'></script>
+    <script type="text/javascript" src="rest_api.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        function Save() {
+            _UpdateUserProfile();
+        }
+
+        function Logout() {
+            _Logout();
+        }
+
+        function Cancel()
+        {
+            window.location = "index.html";
+        }
+
+        function ResetPassword()
+        {
+            window.location = "updatePassword.html";
+        }
+    </script>
+</head>
+<body>
+<div data-role='page' id='home'>
+    <div data-theme='a' data-role='header'>
+        <h1>User Profile</h1>
+    </div>
+
+    <div data-role='content' id="homepage_content">
+        <div class='example-wrapper' data-iscroll>
+            <div>
+                <center>
+                    <img src="img/icon.png" id="companyLogo" name="companyLogo" width="150" height="150" class="image">
+                </center>
+
+                <div data-role="fieldcontain">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="firstName" name="firstName">
+                </div>
+
+                <div data-role="fieldcontain">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName" name="lastName" placeholder="Last Name">
+                </div>
+
+                <div data-role="fieldcontain">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Email">
+                </div>
+
+                <div data-role="fieldcontain">
+                    <label for="contactNumber">Contact Number:</label>
+                    <input type="number" id="contactNumber" name="contactNumber" placeholder="Contact Number">
+                </div>
+
+                <div data-role="fieldcontain">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Password">
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div>        
+        <a onclick="ResetPassword()" data-role="button" data-theme="b">Reset Password</a>
+    </div>
+
+    <div data-theme='a' data-role='footer'>
+        <div data-role="navbar">
+            <ul>
+                <li><a onclick="Save()" id="save">Save</a></li>
+                <li><a onclick="Logout()" data-role="button">Log out</a></li>
+                <li><a onclick="Cancel()" data-role="button">Cancel</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+    var email = localStorage.getItem("currentUserEmail");
+    var firstName = localStorage.getItem("currentUserFirstName");
+    var lastName = localStorage.getItem("currentUserLastName");
+    var contactNumber = localStorage.getItem("currentUserContactNumber");
+
+    var emailInput = document.getElementById('email');
+    emailInput.value = email;
+
+    var firstNameInput = document.getElementById('firstName');
+    firstNameInput.value = firstName;
+
+    var lastNameInput = document.getElementById('lastName');
+    lastNameInput.value = lastName;
+
+    var contactNumberInput = document.getElementById('contactNumber')
+    contactNumberInput.value = contactNumber;
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+    <meta name='viewport' content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <link rel='stylesheet' href='http://code.jquery.com/mobile/1.4.0-beta.1/jquery.mobile-1.4.0-beta.1.min.css' />
+    <link rel='stylesheet' href='http://example.gajotres.net/iscrollview/jquery.mobile.iscrollview.css' />
+    <link rel='stylesheet' href='http://example.gajotres.net/iscrollview/jquery.mobile.iscrollview-pull.css' />
+    <style>
+        .ui-content {
+            padding: 0 !important;
+        }
+
+        .ui-listview {
+            margin: 0 !important;
+        }
+
+        .example-wrapper, .example-wrapper div.iscroll-scroller {
+            width: 100% !important;
+        }
+    </style>
+    <script src='http://code.jquery.com/jquery-1.10.1.min.js'></script>
+    <script src='http://code.jquery.com/mobile/1.4.0-beta.1/jquery.mobile-1.4.0-beta.1.min.js'></script>
+    <script src='http://example.gajotres.net/iscrollview/iscroll.js'></script>
+    <script src='http://example.gajotres.net/iscrollview/jquery.mobile.iscrollview.js'></script>
+    <script type="text/javascript" charset="utf-8" src="phonegap-1.0.0.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="rest_api.js"></script>
+    <script type="text/javascript" src="page_navigation.js"></script>
+    <script type="text/javascript" charset="utf-8">
+
+        document.addEventListener("deviceready", onDeviceReady, false);
+
+        function onDeviceReady()
+        {
+            _GetUserListings();
+        }
+
+        function viewListingDetail() {
+            localStorage.setItem("getListingData", "false");
+            window.location = "details_listing.html"
+        }
+
+        function viewListingLocations(button)
+        {
+            localStorage.setItem("selectedListingId", button.getAttribute("data-id"));            
+            window.location = "list_of_locations.html"
+        }
+
+        function whatsThis(){
+            alert("First set up your Listings before you can continue to add Locations. A Listing will contain or more Locations which you will add after this step.")
+        }   
+
+    </script>
+</head>
+<body>
+    <div data-role='page' id='home'>
+
+        <div data-theme='a' data-role='header'>
+            <a onclick="_Back()" class="ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-back ui-btn-icon-notext" >Back</a>
+            <h1>
+                Listings
+            </h1>
+        </div>
+
+        <div data-role='content'>
+            <div class='example-wrapper' data-iscroll>
+                <ul data-role='listview' id='listings' data-theme='a'></ul>
+            </div>
+        </div>
+
+        <div data-theme='a' data-role='footer'>
+            <div data-role="navbar">
+                <ul>
+                    <li><a onclick="viewListingDetail()" data-icon="plus">New Listing</a></li>
+                    <li><a onclick="whatsThis()" data-icon="info">What's this?</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

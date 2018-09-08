@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+    <meta name='viewport' content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <link rel='stylesheet' href='http://code.jquery.com/mobile/1.4.0-beta.1/jquery.mobile-1.4.0-beta.1.min.css' />
+    <link rel='stylesheet' href='http://example.gajotres.net/iscrollview/jquery.mobile.iscrollview.css' />
+    <link rel='stylesheet' href='http://example.gajotres.net/iscrollview/jquery.mobile.iscrollview-pull.css' />
+    <link rel="stylesheet" href="css/superfluityStyle.css">
+    <style>
+        .ui-content {
+            padding: 0 !important;
+        }
+
+        .ui-listview {
+            margin: 0 !important;
+        }
+
+        .example-wrapper, .example-wrapper div.iscroll-scroller {
+            width: 100% !important;
+        }
+    </style>
+    <script src='http://code.jquery.com/jquery-1.10.1.min.js'></script>
+    <script src='http://code.jquery.com/mobile/1.4.0-beta.1/jquery.mobile-1.4.0-beta.1.min.js'></script>
+    <script src='http://example.gajotres.net/iscrollview/iscroll.js'></script>
+    <script src='http://example.gajotres.net/iscrollview/jquery.mobile.iscrollview.js'></script>
+    <script type="text/javascript" src="rest_api.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8">
+
+        var getData = localStorage.getItem("getItemData");
+        if (getData == "true") {
+            document.addEventListener("deviceready", onDeviceReady, false);
+        }
+
+        function onDeviceReady() {
+            _GetItem();
+        }
+
+        function Save()
+        {
+            _SaveItem();
+        }
+
+    </script>
+</head>
+<body>
+    <div data-role='page' id='home'>
+
+        <div data-theme='a' data-role='header'>
+            <h1>
+                Generic Office Item
+            </h1>
+        </div>
+
+        <div data-role='content'>
+            <div class='example-wrapper' data-iscroll>
+                <ul data-role='listview' id='movie-list' data-theme='a'>
+
+                    <center>
+                        <img src="img/icon.png" id="companyLogo" name="companyLogo" width="150" height="150" class="image">
+                    </center>
+
+                    <div data-role="fieldcontain">
+                        <label for="itemTitle">Item Title:</label>
+                        <input type="text" id="itemTitle" name="itemTitle" placeholder="Portable Projector">
+                    </div>
+
+                    <div data-role="fieldcontain">
+                        <label for="description">Description/Specifications:</label>
+                        <textarea name="description" id="description" placeholder="Pro-Mini LCD LED Projector"></textarea>
+                    </div>
+
+                    <div data-role="fieldcontain">
+                        <label for="flatRate">Flat Rate p/h (R):</label>
+                        <input type="number" id="flatRate" name="flatRate" placeholder="50">
+                    </div>
+                </ul>
+            </div>
+        </div>
+
+        <div data-theme='a' data-role='footer'>
+            <div data-role="navbar">
+                <ul>
+                    <li><a onclick="Save()" data-role="button">Save</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" charset="utf-8">
+
+    </script>
+</body>
+</html>

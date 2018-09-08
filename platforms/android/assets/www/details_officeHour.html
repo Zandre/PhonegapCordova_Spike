@@ -1,0 +1,259 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+    <meta name='viewport' content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <link rel='stylesheet' href='http://code.jquery.com/mobile/1.4.0-beta.1/jquery.mobile-1.4.0-beta.1.min.css' />
+    <link rel='stylesheet' href='http://example.gajotres.net/iscrollview/jquery.mobile.iscrollview.css' />
+    <link rel='stylesheet' href='http://example.gajotres.net/iscrollview/jquery.mobile.iscrollview-pull.css' />
+    <style>
+        .ui-content {
+            padding: 0 !important;
+        }
+
+        .ui-listview {
+            margin: 0 !important;
+        }
+
+        .example-wrapper, .example-wrapper div.iscroll-scroller {
+            width: 100% !important;
+        }
+    </style>
+    <script src='http://code.jquery.com/jquery-1.10.1.min.js'></script>
+    <script src='http://code.jquery.com/mobile/1.4.0-beta.1/jquery.mobile-1.4.0-beta.1.min.js'></script>
+    <script src='http://example.gajotres.net/iscrollview/iscroll.js'></script>
+    <script src='http://example.gajotres.net/iscrollview/jquery.mobile.iscrollview.js'></script>
+    <script type="text/javascript" src="rest_api.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="page_navigation.js"></script>
+    <script type="text/javascript" charset="utf-8">
+
+        document.addEventListener("deviceready", onDeviceReady, false);
+        function onDeviceReady() {
+            _GetOfficeHoursByListingLocationId();
+        }
+
+        function Save() {
+            _SaveOfficeHours();
+        }
+
+        function MondayChange()
+        {
+            var mondayOpen = $("#chkMonday");
+            if (mondayOpen.is(":checked"))
+            {
+                document.getElementById("monday_OpenTime").readOnly = false;
+                document.getElementById("monday_CloseTime").readOnly = false;
+            }
+            else
+            {
+                document.getElementById("monday_OpenTime").readOnly = true;
+                document.getElementById("monday_CloseTime").readOnly = true;
+            }
+        }
+
+        function TuesdayChange() {
+            var tuesdayOpen = $("#chkTuesday");
+            if (tuesdayOpen.is(":checked")) {
+                document.getElementById("tuesday_OpenTime").readOnly = false;
+                document.getElementById("tuesday_CloseTime").readOnly = false;
+            }
+            else {
+                document.getElementById("tuesday_OpenTime").readOnly = true;
+                document.getElementById("tuesday_CloseTime").readOnly = true;
+            }
+        }
+
+        function WednesdayChange() {
+            var wednesdayOpen = $("#chkWednesday");
+            if (wednesdayOpen.is(":checked")) {
+                document.getElementById("wednesday_OpenTime").readOnly = false;
+                document.getElementById("wednesday_CloseTime").readOnly = false;
+            }
+            else {
+                document.getElementById("wednesday_OpenTime").readOnly = true;
+                document.getElementById("wednesday_CloseTime").readOnly = true;
+            }
+        }
+
+        function ThursdayChange() {
+            var thursdayOpen = $("#chkThursday");
+            if (thursdayOpen.is(":checked")) {
+                document.getElementById("thursday_OpenTime").readOnly = false;
+                document.getElementById("thursday_CloseTime").readOnly = false;
+            }
+            else {
+                document.getElementById("thursday_OpenTime").readOnly = true;
+                document.getElementById("thursday_CloseTime").readOnly = true;
+            }
+        }
+
+        function FridayChange() {
+            var fridayOpen = $("#chkFriday");
+            if (fridayOpen.is(":checked")) {
+                document.getElementById("friday_OpenTime").readOnly = false;
+                document.getElementById("friday_CloseTime").readOnly = false;
+            }
+            else {
+                document.getElementById("friday_OpenTime").readOnly = true;
+                document.getElementById("friday_CloseTime").readOnly = true;
+            }
+        }
+
+        function SaturdayChange() {
+            var saturdayOpen = $("#chkSaturday");
+            if (saturdayOpen.is(":checked")) {
+                document.getElementById("saturday_OpenTime").readOnly = false;
+                document.getElementById("saturday_CloseTime").readOnly = false;
+            }
+            else {
+                document.getElementById("saturday_OpenTime").readOnly = true;
+                document.getElementById("saturday_CloseTime").readOnly = true;
+            }
+        }
+
+        function SundayChange() {
+            var sundayOpen = $("#chkSunday");
+            if (sundayOpen.is(":checked")) {
+                document.getElementById("sunday_OpenTime").readOnly = false;
+                document.getElementById("sunday_CloseTime").readOnly = false;
+            }
+            else {
+                document.getElementById("sunday_OpenTime").readOnly = true;
+                document.getElementById("sunday_CloseTime").readOnly = true;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div data-role='page' id='home'>
+
+        <div data-theme='a' data-role='header'>
+            <a onclick="_Back()" class="ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-back ui-btn-icon-notext">Back</a>
+            <h1>
+                Office Hours
+            </h1>
+        </div>
+
+        <div data-role='content'>
+            <div class='example-wrapper' data-iscroll>
+                <ul data-role='listview' data-theme='a'>
+                    <li>
+                        <center>
+                            <img src="img/icon.png" id="companyLogo" name="companyLogo" width="150" height="150" class="image">
+                        </center>
+                    </li>
+                    <li>
+                        <div data-role="fieldcontain">
+                            <form>
+                                <h2>Monday</h2>
+                                <label>
+                                    <input type="checkbox" id="chkMonday" checked onchange="MondayChange()">Open
+                                </label>
+                                <label for="monday_OpenTime">Open Time:</label>
+                                <input type="time" id="monday_OpenTime" value="08:00">
+                                <label for="monday_CloseTime">Close Time:</label>
+                                <input type="time" id="monday_CloseTime" value="16:00">
+                            </form>
+                        </div>
+                    </li>
+                    <li>
+                        <div data-role="fieldcontain">
+                            <form>
+                                <h3>Tuesday</h3>
+                                <label>
+                                    <input type="checkbox" id="chkTuesday" checked onchange="TuesdayChange()">Open
+                                </label>
+                                <label for="tuesday_OpenTime">Open Time:</label>
+                                <input type="time" id="tuesday_OpenTime" value="08:00">
+                                <label for="tuesday_CloseTime">Close Time:</label>
+                                <input type="time" id="tuesday_CloseTime" value="16:00">
+                            </form>
+                        </div>
+                    </li>
+                    <li>
+                        <div data-role="fieldcontain">
+                            <form>
+                                <h3>Wednesday</h3>
+                                <label>
+                                    <input type="checkbox" id="chkWednesday" checked onchange="WednesdayChange()">Open
+                                </label>
+                                <label for="wednesday_OpenTime">Open Time:</label>
+                                <input type="time" id="wednesday_OpenTime" value="08:00">
+                                <label for="wednesday_CloseTime">Close Time:</label>
+                                <input type="time" id="wednesday_CloseTime" value="16:00">
+                            </form>
+                        </div>
+                    </li>
+                    <li>
+                        <div data-role="fieldcontain">
+                            <form>
+                                <h3>Thursday</h3>
+                                <label>
+                                    <input type="checkbox" id="chkThursday" checked onchange="ThursdayChange()">Open
+                                </label>
+                                <label for="thursday_OpenTime">Open Time:</label>
+                                <input type="time" id="thursday_OpenTime" value="08:00">
+                                <label for="thursday_CloseTime">Close Time:</label>
+                                <input type="time" id="thursday_CloseTime" value="16:00">
+                            </form>
+                        </div>
+                    </li>
+                    <li>
+                        <div data-role="fieldcontain">
+                            <form>
+                                <h3>Friday</h3>
+                                <label>
+                                    <input type="checkbox" id="chkFriday" value="check" checked onchange="FridayChange()">Open
+                                </label>
+                                <label for="friday_OpenTime">Open Time:</label>
+                                <input type="time" id="friday_OpenTime" value="08:00">
+                                <label for="friday_CloseTime">Close Time:</label>
+                                <input type="time" id="friday_CloseTime" value="16:00">
+                            </form>
+                        </div>
+                    </li>
+                    <li>
+                        <div data-role="fieldcontain">
+                            <form>
+                                <h3>Saturday</h3>
+                                <label>
+                                    <input type="checkbox" id="chkSaturday" onchange="SaturdayChange()">Open
+                                </label>
+                                <label for="saturday_OpenTime">Open Time:</label>
+                                <input type="time" id="saturday_OpenTime" value="08:00" readonly>
+                                <label for="saturday_CloseTime">Close Time:</label>
+                                <input type="time" id="saturday_CloseTime" value="13:00" readonly>
+                            </form>
+                        </div>
+                    </li>
+                    <li>
+                        <div data-role="fieldcontain">
+                            <form>
+                                <h3>Sunday</h3>
+                                <label>
+                                    <input type="checkbox" id="chkSunday" onchange="SundayChange()">Open
+                                </label>
+                                <label for="sunday_OpenTime">Open Time:</label>
+                                <input type="time" id="sunday_OpenTime" value="08:00" readonly>
+                                <label for="sunday_CloseTime">Close Time:</label>
+                                <input type="time" id="sunday_CloseTime" value="13:00" readonly>
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div data-theme='a' data-role='footer'>
+            <div data-role="navbar">
+                <ul>
+                    <li><a onclick="Save()" data-role="button">Save</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
